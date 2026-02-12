@@ -1,0 +1,36 @@
+{
+  "expectation_suite_name": "claims_silver_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "ClaimID"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "ClaimDate"
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "ClaimAmount",
+        "min_value": 0,
+        "max_value": 20000
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "ClaimStatus",
+        "value_set": [
+          "Approved",
+          "Denied",
+          "Pending"
+        ]
+      }
+    }
+  ]
+}

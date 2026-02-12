@@ -1,0 +1,11 @@
+{
+  "name": "LS_AzureDatabricks",
+  "properties": {
+    "type": "AzureDatabricks",
+    "typeProperties": {
+      "domain": "https://adb-1234567890123456.7.azuredatabricks.net",
+      "authentication": "MSI",
+      "workspaceResourceId": "/subscriptions/9f8c7a6b-1234-4567-89ab-1c2d3e4f5678/resourceGroups/rg-claims-data-dev/providers/Microsoft.Databricks/workspaces/dbw-claims-dev"
+    }
+  }
+}

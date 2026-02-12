@@ -1,0 +1,76 @@
+{
+  "name": "bronze_claims",
+  "format": "csv",
+  "delimiter": ",",
+  "date_format": "dd-MM-yyyy",
+  "columns": [
+    {
+      "name": "ClaimID",
+      "type": "string"
+    },
+    {
+      "name": "PatientID",
+      "type": "string"
+    },
+    {
+      "name": "ProviderID",
+      "type": "string"
+    },
+    {
+      "name": "ClaimAmount",
+      "type": "decimal(12,2)"
+    },
+    {
+      "name": "ClaimDate",
+      "type": "date"
+    },
+    {
+      "name": "DiagnosisCode",
+      "type": "string"
+    },
+    {
+      "name": "ProcedureCode",
+      "type": "string"
+    },
+    {
+      "name": "PatientAge",
+      "type": "int"
+    },
+    {
+      "name": "PatientGender",
+      "type": "string"
+    },
+    {
+      "name": "ProviderSpecialty",
+      "type": "string"
+    },
+    {
+      "name": "ClaimStatus",
+      "type": "string"
+    },
+    {
+      "name": "PatientIncome",
+      "type": "decimal(12,2)"
+    },
+    {
+      "name": "PatientMaritalStatus",
+      "type": "string"
+    },
+    {
+      "name": "PatientEmploymentStatus",
+      "type": "string"
+    },
+    {
+      "name": "ProviderLocation",
+      "type": "string"
+    },
+    {
+      "name": "ClaimType",
+      "type": "string"
+    },
+    {
+      "name": "ClaimSubmissionMethod",
+      "type": "string"
+    }
+  ]
+}

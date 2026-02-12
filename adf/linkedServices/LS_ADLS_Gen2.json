@@ -1,0 +1,9 @@
+{
+  "name": "LS_ADLS_Gen2",
+  "properties": {
+    "type": "AzureBlobFS",
+    "typeProperties": {
+      "url": "https://styagidatalake.dfs.core.windows.net/"
+    }
+  }
+}

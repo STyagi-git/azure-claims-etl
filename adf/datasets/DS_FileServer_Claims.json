@@ -1,0 +1,20 @@
+{
+  "name": "DS_FileServer_Claims",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "LS_FileServer",
+      "type": "LinkedServiceReference"
+    },
+    "type": "DelimitedText",
+    "typeProperties": {
+      "location": {
+        "type": "FileServerLocation",
+        "folderPath": "claims",
+        "fileName": "claims.csv"
+      },
+      "columnDelimiter": ",",
+      "firstRowAsHeader": true
+    }
+  }
+}
+      
