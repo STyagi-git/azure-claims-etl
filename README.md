@@ -116,7 +116,7 @@ Trigger:
 
 `PL_Claims_EndToEnd`
 
-This executes:
+This executes
 
     1. CopyClaimsToRaw
     2. RunBronzeNotebook
