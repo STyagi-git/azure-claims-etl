@@ -116,12 +116,12 @@ Trigger:
 
 `PL_Claims_EndToEnd`
 
-This executes
+This executes:
 
-    1. CopyClaimsToRaw
-    2. RunBronzeNotebook
-    3. RunSilverNotebook
-    4. RunGoldNotebook
+1. CopyClaimsToRaw
+2. RunBronzeNotebook
+3. RunSilverNotebook
+4. RunGoldNotebook
 
 ---
 
