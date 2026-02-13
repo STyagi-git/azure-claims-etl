@@ -1,14 +1,14 @@
 # Azure Claims ETL (End-to-End) | ADF + Databricks + ADLS Gen2 + Synapse
 
 End-to-end ETL pipeline for an insurance / healthcare-style claims dataset using:
-- **Azure Data Factory** for orchestration
-- **ADLS Gen2** as the lake (Raw → Bronze → Silver → Gold)
-- **Azure Databricks** (PySpark) for transformations
-- **Synapse Serverless SQL** for BI-friendly querying
-- **Great Expectations** starter checks for data quality
-- **GitHub Actions** for CI automation
+    - **Azure Data Factory** for orchestration
+    - **ADLS Gen2** as the lake (Raw → Bronze → Silver → Gold)
+    - **Azure Databricks** (PySpark) for transformations
+    - **Synapse Serverless SQL** for BI-friendly querying
+    - **Great Expectations** starter checks for data quality
+    - **GitHub Actions** for CI automation
 
-> TL;DR: FileServer → ADLS Raw → Databricks Bronze → Silver → Gold → Synapse views.
+> FileServer → ADLS Raw → Databricks Bronze → Silver → Gold → Synapse views.
 
 ---
 
@@ -38,7 +38,7 @@ azure-claims-etl/
 
 ## What you get
 
-1) ADF orchestration (adf/)
+### 1) ADF orchestration (adf/)
 
 - Copy activity: File Server → ADLS Gen2 Raw
 - Notebook activities: Runs Databricks notebooks in order:
@@ -47,24 +47,24 @@ azure-claims-etl/
     3. Gold marts
 
 Example pipeline definition:
-- `PL_Claims_EndToEnd` copies the CSV into Raw and triggers the 3 Databricks stages.
+    - `PL_Claims_EndToEnd` copies the CSV into Raw and triggers the 3 Databricks stages.
 
-2) Databricks Medallion notebooks (databricks/notebooks/)
+### 2) Databricks Medallion notebooks (databricks/notebooks/)
 
 - Bronze: ingest CSV → Delta, add metadata + record hash, partition by ingest date
 - Silver: clean, filter invalid rows, dedupe by ClaimID, standardize text, add date partitions
 - Gold: marts for KPI aggregates + simple fraud signals
 
-3) Data Quality (quality/great_expectations/)
+### 3) Data Quality (quality/great_expectations/)
 
 - Starter Great Expectations suites live under:
-    - `quality/great_expectations/expectations/`
+  - `quality/great_expectations/expectations/`
 
-4) Synapse Serverless views (sql/synapse/)
+### 4) Synapse Serverless views (sql/synapse/)
 
 - SQL scripts to query Delta outputs via Synapse Serverless and expose BI-ready views.
 
-5) Infra skeleton (infra/bicep/)
+### 5) Infra skeleton (infra/bicep/)
 
 - Bicep templates/skeleton to provision Azure resources (Storage/ADF/Databricks/Synapse etc.).
 
@@ -81,15 +81,15 @@ Example pipeline definition:
 - Synapse workspace (Serverless SQL is enough)
 - (Recommended) Key Vault for secrets
 
-1) Create ADLS containers
+#### 1) Create ADLS containers
 
 Create these containers in your storage account:
-- `raw`
-- `bronze`
-- `silver`
-- `gold`
+    - `raw`
+    - `bronze`
+    - `silver`
+    - `gold`
 
-2) Upload input data
+#### 2) Upload input data
 
 Upload your CSV to:
 
@@ -97,7 +97,7 @@ Upload your CSV to:
 
 (ADF can also copy it from File Server to that path depending on your setup.)
 
-3) Import ADF assets
+#### 3) Import ADF assets
 
 - Import everything under adf/ into your Data Factory.
 - Update any placeholders for:
@@ -110,7 +110,7 @@ The linked services + datasets in this project follow:
 - `LS_AzureDatabricks` → Databricks domain + workspace resource ID
 - `DS_ADLS_Raw_Claims` → raw/claims/claims.csv
 
-4) Run the pipeline
+#### 4) Run the pipeline
 
 Trigger:
 
@@ -118,18 +118,18 @@ Trigger:
 
 This executes:
 
-1. CopyClaimsToRaw
-2. RunBronzeNotebook
-3. RunSilverNotebook
-4. RunGoldNotebook
+    1. CopyClaimsToRaw
+    2. RunBronzeNotebook
+    3. RunSilverNotebook
+    4. RunGoldNotebook
 
 ---
 
 ## Output layout (lake)
 
-- Bronze (Delta): abfss://bronze@<storage>.dfs.core.windows.net/claims_delta/
-- Silver (Delta): abfss://silver@<storage>.dfs.core.windows.net/claims_silver/
-- Gold (Delta marts): abfss://gold@<storage>.dfs.core.windows.net/marts/
+- Bronze (Delta): `abfss://bronze@<storage>.dfs.core.windows.net/claims_delta/`
+- Silver (Delta): `abfss://silver@<storage>.dfs.core.windows.net/claims_silver/`
+- Gold (Delta marts): `abfss://gold@<storage>.dfs.core.windows.net/marts/`
 
 `<storage>` = your Storage Account name
 
