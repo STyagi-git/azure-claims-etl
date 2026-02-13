@@ -135,8 +135,8 @@ This executes:
 
 Gold marts produced:
 
-`mart_claims_kpi_daily`
-`mart_fraud_signals`
+- `mart_claims_kpi_daily`
+- `mart_fraud_signals`
 
 ---
 
